@@ -1,8 +1,30 @@
+import { useState } from "react";
+import Content from "./components/Content";
+import NoProjectContent from "./components/NoProjectContent";
+import SideBar from "./components/SideBar";
+import "./index.css";
+
 function App() {
+
+  const [projects,setProjects] = useState({
+    selectedProjectId:undefined,
+    Projects:[]
+  });
+
+  function startAddingProject(){
+    setProjects(prevState => {
+      return{
+        ...prevState,
+        selectedProjectId:null
+      };
+    });
+  }
+
   return (
-    <>
-      <h1 className="my-8 text-center text-5xl font-bold">Hello AAAAAAAAAA</h1>
-    </>
+    <main className="h-screen my-8 flex gap-8">
+      <SideBar addProject={startAddingProject}></SideBar>
+      {(projects.selectedProjectId===undefined) ? <NoProjectContent addProject={startAddingProject}></NoProjectContent> :<Content></Content>}
+    </main>
   );
 }
 
