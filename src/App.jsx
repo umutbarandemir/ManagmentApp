@@ -20,10 +20,27 @@ function App() {
     });
   }
 
+  function addProject(newProjectData){
+    setProjects(prevState =>{
+      
+      const newProject = {
+        ...newProjectData,
+        id: Math.random()
+      }
+
+      return{
+        ...prevState, projects:[...prevState.Projects,newProject]
+      }
+    })
+  }
+
+  console.log(projects);
+  
+
   return (
     <main className="h-screen my-8 flex gap-8">
       <SideBar addProject={startAddingProject}></SideBar>
-      {(projects.selectedProjectId===undefined) ? <NoProjectContent addProject={startAddingProject}></NoProjectContent> :<Content></Content>}
+      {(projects.selectedProjectId===undefined) ? <NoProjectContent addProject={startAddingProject}></NoProjectContent> :<Content addProject={addProject}></Content>}
     </main>
   );
 }
