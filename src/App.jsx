@@ -29,18 +29,24 @@ function App() {
       }
 
       return{
-        ...prevState, projects:[...prevState.Projects,newProject]
+        ...prevState, Projects:[...prevState.Projects,newProject] , selectedProjectId:undefined
       }
     })
   }
 
-  console.log(projects);
-  
+  function cancelButton(){
+    setProjects(prevState => {
+      return{
+        ...prevState,
+        selectedProjectId:undefined
+      };
+    });
+  }
 
   return (
     <main className="h-screen my-8 flex gap-8">
-      <SideBar addProject={startAddingProject}></SideBar>
-      {(projects.selectedProjectId===undefined) ? <NoProjectContent addProject={startAddingProject}></NoProjectContent> :<Content addProject={addProject}></Content>}
+      <SideBar addProject={startAddingProject} projects={projects.Projects}></SideBar>
+      {(projects.selectedProjectId===undefined) ? <NoProjectContent addProject={startAddingProject}></NoProjectContent> :<Content addProject={addProject}  cancelProject={cancelButton}></Content>}
     </main>
   );
 }
