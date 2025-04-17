@@ -15,7 +15,7 @@ function SelectedProject(props) {
             <p className='mb-4 text-stone-400'>{formattedDate}</p>
             <p className='text-stone-600 whitespace-pre-wrap'>{props.project.description}</p>
         </header>
-        <Tasks></Tasks>
+        <Tasks Tasks={props.Tasks} onTaskAdd={props.onTaskAdd} onTaskDelete={props.onTaskDelete}></Tasks>
     </div>
   )
 }
