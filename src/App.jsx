@@ -90,7 +90,7 @@ function App() {
 
   const selectedProject = projects.Projects.find((project)=>(project.id === projects.selectedProjectId))
 
-  let content = <SelectedProject Tasks={projects.Tasks} project={selectedProject} onTaskAdd={handleAddTask} onTaskDelete={handleDeleteTask} delete={deleteProject}></SelectedProject>
+  let content = <SelectedProject Tasks={projects.Tasks.filter(task => task.projectId === projects.selectedProjectId)} project={selectedProject} onTaskAdd={handleAddTask} onTaskDelete={handleDeleteTask} delete={deleteProject}></SelectedProject>
 
   if (projects.selectedProjectId===null) {
     content = <Content addProject={addProject}  cancelProject={cancelButton}></Content>

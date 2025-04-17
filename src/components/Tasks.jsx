@@ -6,7 +6,7 @@ function Tasks(props) {
     <section>
         <h2 className='text-2xl font-bold text-stone-700 mb-4'>Tasks</h2>
         <NewTask onTaskAdd={props.onTaskAdd}></NewTask>
-        {props.Tasks === 0 ? <p className='text-stone-800 my-5'> Project doesn't exists!!! </p> :        <ul className='p-4 mt-8 rounded-md bg-stone-100'>
+        {props.Tasks.length === 0 ? <p className='text-stone-800 my-5'> No Tasks Available!!! </p> :        <ul className='p-4 mt-8 rounded-md bg-stone-100'>
             {props.Tasks.map((task)=>(
                 <li key={task.id} className='flex justify-between my-4'> 
                     <span>{task.text}</span>
