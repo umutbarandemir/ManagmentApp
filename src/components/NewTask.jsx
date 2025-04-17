@@ -2,13 +2,16 @@ import React, { useState } from 'react'
 
 function NewTask(props) {
 
-  const [setTask,setEnteredTask] = useState();
+  const [setTask,setEnteredTask] = useState("");
 
   function handleInput(e){
     setEnteredTask(e.target.value);
   } 
 
   function handleClick(){
+    if(setTask.trim()===""){
+      return;
+    }
     setEnteredTask("");
     props.onTaskAdd(setTask);
   }
